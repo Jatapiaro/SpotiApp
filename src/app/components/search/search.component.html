@@ -1,0 +1,18 @@
+
+    <div class="row">
+        <div class="col-md-3">
+            <h1>{{ termino }}</h1>
+            <input [(ngModel)]="termino" name="termino" (keyup)="buscarArtista()" class="form-control" type="text" placeholder="Buscar por artista">
+            <hr>
+        </div>
+        <div class="col-md-9">
+            <!---->
+            <div class="row">
+                <div class="col-md-3"  *ngFor="let artista of _spotifyService.artistas">
+                    <img [src]="artista.images | sinfoto" class="img-fluid img-thumbnail" alt="assets/img/noimage.png">
+                    <p>{{artista.name}}</p>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
