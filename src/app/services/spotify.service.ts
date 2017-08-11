@@ -7,9 +7,15 @@ export class SpotifyService {
 
     artistas:any [] = [];
 
+
+
     URL_BUSQUEDA:string = "https://api.spotify.com/v1/search?";
 
-    TOKEN:string = "BQBtK0YdzB8EJTsYyBgLA-jvw0vKA8PpEok-kBoFW1JD7a8tovyQp-XpdbxwqPT3_EKoISqrWK9lW7VTO5qmGsMEpDYgronX4OriFrgXBTRpgcZkN09221QPRzpHeauKK_lwtSmxHLfx7Y0";
+    URL_ARTISTA : string = "https://api.spotify.com/v1/artists/";
+
+    URL_TOP_TRACKS : string = "https://api.spotify.com/v1/artists/";
+
+    TOKEN:string = "BQCjhf_xypz7yd5EfwQgWuqKt-770di0_qcrPfBGyt7yRWUoC4pVHgsMDn8oewrsqAL8mDXQ_TwNTa9DA-JUXtNP_XgdySxQXVQy2gUkEZypObHWmH6Dx8ZipVdB2q9ZVToWETxHSsiz0Y0";
 
     constructor( private http:Http) { }
 
@@ -31,6 +37,32 @@ export class SpotifyService {
             }
         );
 
+    }
+
+    getArtista ( artistaId:string ) {
+        let url = this.URL_ARTISTA + artistaId;
+        let headers = new Headers();
+        headers.append('authorization', 'Bearer '+this.TOKEN);
+
+        return this.http.get ( url , {headers} ).map(
+            resultado=>{
+                return resultado.json();
+            }
+        );
+    }
+
+    getTop ( artistaId:string ){
+
+
+        let url = this.URL_TOP_TRACKS + "" + artistaId + "/top-tracks?country=ES";
+        let headers = new Headers();
+        headers.append('authorization', 'Bearer '+this.TOKEN);
+
+        return this.http.get ( url , {headers} ).map(
+            resultado=>{
+                return resultado.json().tracks;
+            }
+        );
     }
 
 }

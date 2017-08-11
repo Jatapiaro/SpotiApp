@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule }    from '@angular/http';
 import { FormsModule }   from '@angular/forms';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -12,6 +13,7 @@ import { APP_ROUTING } from './app.routes';
 
 import { SpotifyService } from './services/spotify.service';
 import { SinfotoPipe } from './pipes/sinfoto.pipe';
+import { ArtistaComponent } from './components/artista/artista.component';
 
 @NgModule({
   declarations: [
@@ -19,10 +21,12 @@ import { SinfotoPipe } from './pipes/sinfoto.pipe';
     HomeComponent,
     SearchComponent,
     NavbarComponent,
-    SinfotoPipe
+    SinfotoPipe,
+    ArtistaComponent,
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     FormsModule,
     HttpModule,
     APP_ROUTING
